@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>My Second Page</h2>
+
+    <p class="demo1"></p>
+    <p class="demo1"></p>
+    <p class="demo2"></p>
+
+    <script>
+        let demo1DomList = document.querySelectorAll(".demo1");
+        console.log(demo1DomList);
+
+        let d1 = demo1DomList[0];
+        let d2 = demo1DomList[1];
+
+        d1.innerHTML = "Hello";
+        d2.innerHTML = "World";
+
+        let demo2Dom = document.querySelector(".demo2");
+        demo2Dom.innerHTML = "Good";
+    </script>
+
+</body>
+</html>

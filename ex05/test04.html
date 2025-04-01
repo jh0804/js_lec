@@ -1,0 +1,72 @@
+<!-- 폼 onsubmit -->
+ 
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden-box {
+            display: none;
+        }
+
+        .red-text {
+            font-size: 10px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>폼 이벤트</h1>
+    <hr>
+    <form action="/join" onsubmit="return valid()">
+        <input type="text" id="password"><br>
+        <input type="text" id="password-check"><br>
+        <div id="pw-same" class="hidden-box red-text">패스워드가 동일합니다</div>
+        <div id="pw-not-same" class="hidden-box red-text">패스워드가 동일하지 않습니다</div>
+        <button type="submit">회원가입</button>
+    </form>
+
+    <script>
+        let pw = document.querySelector("#password");
+        let pwCheck = document.querySelector("#password-check");
+
+        function valid() {
+            if (pw.value == pwCheck.value) {
+                return true;
+            } else {
+                alert("pw가 동일하지 않습니다.");
+                return false;
+            }
+        }
+
+        pw.addEventListener("keyup", (e) => {
+            if (pw.value == pwCheck.value) {
+                pw.readOnly = true;
+                document.querySelector("#pw-same").classList.remove("hidden-box");
+                document.querySelector("#pw-not-same").classList.add("hidden-box");
+            } else {
+                pw.readOnly = false;
+                document.querySelector("#pw-same").classList.add("hidden-box");
+                document.querySelector("#pw-not-same").classList.remove("hidden-box");
+            }
+        });
+
+        pwCheck.addEventListener("keyup", (e) => {
+            if (pw.value == pwCheck.value) {
+                pw.readOnly = true;
+                document.querySelector("#pw-same").classList.remove("hidden-box");
+                document.querySelector("#pw-not-same").classList.add("hidden-box");
+            } else {
+                pw.readOnly = false;
+                document.querySelector("#pw-same").classList.add("hidden-box");
+                document.querySelector("#pw-not-same").classList.remove("hidden-box");
+            }
+        });
+    </script>
+</body>
+
+</html>

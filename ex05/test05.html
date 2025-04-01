@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>숨기기</h1>
+    <button onclick="hideDisplay()">display로 숨기기</button>
+    <button onclick="hideVisible()">visible로 숨기기</button>
+    <button onclick="empty()">박스 내부 날리기</button>
+    <div class="box" id="outerBox">
+        <div class="box" id="innerBox1">
+            내부박스1
+        </div>
+        <div class="box" id="innerBox2">
+            내부박스2
+        </div>
+    </div>
+
+    <script>
+        function empty(){
+            let el = document.querySelector("#outerBox");
+            // el.innerHTML="";
+            console.log(el.children);
+            let cs=el.children;
+            // cs[0].style.display="none";
+            Array.from(cs).forEach(element => {
+                element.style.display="none";
+            });
+        }
+        function hideDisplay(){
+            let el = document.querySelector("#innerBox1");
+            el.style.display = "none";
+        }
+        function hideVisible(){
+            let el = document.querySelector("#innerBox2");
+            el.style.visibility = "hidden";
+        }
+    </script>
+</body>
+</html>

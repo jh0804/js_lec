@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>fetch get</h1>
+    <hr>
+    <button onclick="download()">다운로드</button>
+    <hr>
+    <button onclick="download()">다운로드2</button>
+    
+
+    <script>
+        function download(){
+            let response = fetch("https://jsonplaceholder.typicode.com/todos/1",{
+                method : "get"
+            });
+            // promise 박스가 차면 자동 실행 (then)
+            // res = 문자열
+            response
+                .then((res)=>res.json())
+                .then((res)=>{
+                    console.log(res);
+                });
+        }
+        async function download2(){
+            // real data(O) promise data(X)
+            let response =await fetch("https://jsonplaceholder.typicode.com/todos/1",{
+                method : "get"
+            }); // (url, Object)
+            // console.log(response);
+        
+            let responseBody = await response.json();
+            console.log(responseBody);
+        }
+    </script>
+</body>
+</html>

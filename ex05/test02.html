@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>이벤트 리스너</h1>
+    <hr>
+    <button id="btn1">클릭</button>
+
+    <script>
+        // btn1 = 찾아낸 객체(dom) - 단순 문자열이 아님
+        let btn1 = document.querySelector("#btn1");
+
+        // 하나는 행위, 하나는 어떤 이벤트를 받을지
+        btn1.addEventListener("click",(e)=>{
+            console.log(e);
+            alert("btn1 호출됨");
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JSON</h1>
+    <hr>
+    <button onclick="m1()">JS Object -> JSON</button>
+    <button onclick="m2()">JSON -> JS Object</button>
+
+    <script>
+        function m1(){
+            let data = JSON.stringify(user);
+            console.log(data);
+        }
+
+        function m2(){
+            let temp = `{"id":1,"username":"ssar","password":"1234","hobby":["축구","농구"],"address":{"con":"한국","city":"부산","code":56666}}`;
+            let data = JSON.parse(temp);
+            console.log(data);
+            console.log(data.address.city);
+        }
+
+        // 이걸 직렬화?
+        let user = {
+            id : 1,
+            username : "ssar",
+            password : "1234",
+            hobby : ["축구", "농구"],
+            address : {
+                con : "한국",
+                city : "부산",
+                code : "56666"
+            }
+        };
+        // console.log(user);
+    </script>
+</body>
+</html>

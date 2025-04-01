@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red-box{
+            border : 1px solid black;
+            background-color:red;
+            padding : 10px;
+
+        } 
+
+    </style>
+</head>
+<body>
+    <div class="red-box" id="name-box">홍길동</div>
+    <button onclick="changeName()">이름변경</button>
+
+    <script>
+        let n1 = 1;
+        alert(n1);
+        console.log(`n1 : ${n1}`);
+
+        function changeName(){
+            let d1 = document.querySelector("#name-box");
+            console.log(d1);
+            d1.innerHTML="임꺽정";
+        }
+        
+    </script>
+</body>
+</html>
