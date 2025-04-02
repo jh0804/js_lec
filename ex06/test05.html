@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>fetch get, post, put, delete</h1>
+    <hr>
+    <button onclick="get1()">get</button>
+    <button onclick="post1()">post</button>
+    <button onclick="put1()">put</button>
+    <button onclick="delete1()">delete</button>
+
+    <form>
+        <input type="text" id="title" placeholder="title"><br>
+        <input type="text" id="content" placeholder="content"><br>
+        <input type="text" id="author" placeholder="author"><br>
+        <button type="button" onclick="write1()">게시글쓰기</button>
+    </form>
+    
+
+    <script>
+
+        async function write1() {
+            let requestBody = {
+                "title": document.querySelector("#title").value,
+                "content": document.querySelector("#content").value,
+                "author": document.querySelector("#author").value
+            };
+
+            let response = await fetch("http://localhost:8080/api/boards", {
+                method: "post",
+                body: JSON.stringify(requestBody),
+                headers: { "Content-Type": "application/json" }
+            });
+
+            let responseBody = await response.json();
+
+            console.log(responseBody);
+        }
+
+        async function get1() {
+            let response = await fetch("http://localhost:8080/api/boards/1", {
+                method: "get"
+            });
+            let responseBody = await response.json();
+
+            console.log(responseBody);
+        }
+
+        async function post1() {
+            let requestBody = {
+                "title": "제목9",
+                "content": "내용9",
+                "author": "ssar"
+            };
+
+            let response = await fetch("http://localhost:8080/api/boards", {
+                method: "post",
+                body: JSON.stringify(requestBody),
+                headers: { "Content-Type": "application/json" }
+            });
+
+            let responseBody = await response.json();
+
+            console.log(responseBody);
+        }
+
+        async function put1() {
+            let requestBody = {
+                "title": "제목11",
+                "content": "내용11",
+                "author": "ssar"
+            };
+
+            let response = await fetch("http://localhost:8080/api/boards/1", {
+                method: "put",
+                body: JSON.stringify(requestBody),
+                headers: { "Content-Type": "application/json" }
+            });
+
+            let responseBody = await response.json();
+            console.log(responseBody);
+        }
+
+        async function delete1() {
+            let response = await fetch("http://localhost:8080/api/boards/1", {
+                method: "delete"
+            });
+
+            let responseBody = await response.json();
+
+            console.log(responseBody);
+        }
+    </script>
+</body>
+
+</html>

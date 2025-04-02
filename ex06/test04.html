@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid black;
+            padding: 10px;
+            margin-bottom: 5px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer-box">
+
+    </div>
+
+    <script>
+        let site = document.querySelector("#outer-box");
+
+        makeRedBox();
+        makeOrangeBox();
+        makeWhiteBox2();
+        makeYellowBox();
+        makeGreenBox();
+
+        function makeRedBox() {
+            let divDom = document.createElement("div");
+            divDom.setAttribute("class", "red");
+            site.append(divDom);
+        }
+
+        function makeOrangeBox() {
+            let divDom = document.createElement("div");
+            divDom.setAttribute("class", "orange");
+            site.append(divDom);
+        }
+        function makeYellowBox() {
+            let divDom = document.createElement("div");
+            divDom.setAttribute("class", "yellow");
+            site.append(divDom);
+        }
+        function makeGreenBox() {
+            let divDom = document.createElement("div");
+            divDom.setAttribute("class", "green");
+            site.append(divDom);
+        }
+
+        function makeWhiteBox() {
+            let request = new XMLHttpRequest();
+            // 세팅
+            request.open('GET', 'http://localhost:8080/api/boards/1', false); // 마지막 인자 false → 동기 요청
+            // get은 response body가 없으니까 null
+            request.send(null);
+            let responseBody = JSON.parse(request.responseText);
+            let divDom = document.createElement("div");
+            divDom.innerHTML = responseBody.body.title;
+            site.append(divDom);
+        }
+
+        async function makeWhiteBox2() {
+            let response = await fetch("http://localhost:8080/api/boards/1");
+            let responseBody = await response.json();
+            let divDom = document.createElement("div");
+            divDom.innerHTML = responseBody.body.title;
+            site.append(divDom);
+        }
+
+    </script>
+</body>
+
+</html>
